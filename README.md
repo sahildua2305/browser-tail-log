@@ -2,6 +2,8 @@
 
 browser-tail-log is php application for serving tail -F output to the browser.
 
+The best thing about this application is that it never reads the log file entirely. It just seeks the required number of lines or the newly added lines from the log file. Hence it's useful with log files which can't be opened in memory.
+
 ## Features
  - memory efficient (at max 4 MB per client)
  - time efficient
