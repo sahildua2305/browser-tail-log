@@ -182,9 +182,10 @@ class Application {
 		$this->connections[$connection_id] = max($this->connections) + 1;
 	}
 
+
 	/**
 	 * action_file_changed - looking for any changes in the file and returning new lines if changed
-	 * @param  [type] $connection_id identifier for clients
+	 * @param  integer $connection_id identifier for clients
 	 */
 	public function action_file_changed($connection_id, $data){
 		$user_id = $this->connections[$connection_id];
@@ -203,6 +204,7 @@ class Application {
 			$new_data['output'] = $output_array['output'];
 			$new_data['mtime'] = $curr_mtime;
 			$new_data['cursor_pos'] = $output_array['cursor_pos'];
+
 			$this->server->sendData($connection_id, 'file_changed', $new_data);
 		}
 		else if($curr_mtime != $old_mtime){
@@ -213,6 +215,7 @@ class Application {
 			$new_data['output'] = $output_array['output'];
 			$new_data['mtime'] = $curr_mtime;
 			$new_data['cursor_pos'] = $output_array['cursor_pos'];
+
 			$this->server->sendData($connection_id, 'file_changed', $new_data);
 		}
 	}
